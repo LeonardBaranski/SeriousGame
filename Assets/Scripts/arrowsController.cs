@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class arrowController : MonoBehaviour
+public class arrowsController : MonoBehaviour
 {
     public float force = 20;
     public GameObject arrow;
@@ -62,3 +62,4 @@ public class arrowController : MonoBehaviour
         Destroy(clone, 2f);
     }
 }
+

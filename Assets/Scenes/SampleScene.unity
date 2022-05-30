@@ -1958,7 +1958,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636098180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e86ac9734402c468bbdec5f2d17d29, type: 3}
+  m_Script: {fileID: 11500000, guid: 75f992baea350364d82a6ae92a90af7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   force: 20
@@ -1968,7 +1968,7 @@ MonoBehaviour:
   maxForce: 30
   minForce: 1
   chargingIntervall: 0.2
-  chargingIncrement: 3
+  chargingIncrement: 4
 --- !u!1 &1699960814
 GameObject:
   m_ObjectHideFlags: 0
