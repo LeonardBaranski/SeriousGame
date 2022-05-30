@@ -1968,7 +1968,7 @@ MonoBehaviour:
   maxForce: 30
   minForce: 1
   chargingIntervall: 0.2
-  chargingIncrement: 4
+  chargingIncrement: 3
 --- !u!1 &1699960814
 GameObject:
   m_ObjectHideFlags: 0
