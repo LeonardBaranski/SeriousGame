@@ -6,12 +6,15 @@ public class arrowsController : MonoBehaviour
 {
     public float force = 20;
     public GameObject arrow;
+    public GameObject startMenu;
     public Transform spawn;
     public Transform crosshair;
     public float maxForce = 30;
     public float minForce = 1;
     public float chargingIntervall = .2f;
     public float chargingIncrement = 3f;
+    public float fireRate = 1f;
+    private float lastShot = 0f;
 
 
     // Start is called before the first frame update
@@ -23,22 +26,25 @@ public class arrowsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale != 0)
+        if (Time.time > fireRate + lastShot)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!startMenu.activeSelf)
             {
-                InvokeRepeating("IncreaseForce", 0, chargingIntervall);
-            }
-            else if (Input.GetKeyUp(KeyCode.Space))
-            {
-                CancelInvoke("IncreaseForce");
-                ShootArrow();
-                force = minForce;
-                Debug.Log(force);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    InvokeRepeating("IncreaseForce", 0, chargingIntervall);
+                }
+                else if (Input.GetKeyUp(KeyCode.Space))
+                {
+                    CancelInvoke("IncreaseForce");
+                    ShootArrow();
+                    force = minForce;
+                    lastShot = Time.time;
+                    Debug.Log(force);
+                }
             }
         }
     }
-
 
     private void IncreaseForce()
     {
@@ -59,6 +65,7 @@ public class arrowsController : MonoBehaviour
         GameObject clone = Instantiate(arrow, spawn.position, spawn.rotation * Quaternion.Euler(0f, 180f, 0f));
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
         rb.velocity = fromSpawnToCross * force * -1;
+
         Destroy(clone, 2f);
     }
 }
