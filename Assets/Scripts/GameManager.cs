@@ -5,10 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject startMenuPanel;
+    public GameObject startTargetImage;
+
     // Start is called before the first frame update
     void Awake()
     {
         startMenuPanel.SetActive(true);
+        startTargetImage.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -20,7 +23,15 @@ public class GameManager : MonoBehaviour
 
     public void startGame()
     {
-        startMenuPanel.SetActive(false);
+        StartCoroutine(start());
+    }
+
+    private IEnumerator start()
+    {
+        startTargetImage.SetActive(true);
         Time.timeScale = 1;
+        yield return new WaitForSeconds(2f);
+
+        startMenuPanel.SetActive(false);
     }
 }
