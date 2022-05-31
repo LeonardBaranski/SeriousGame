@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     {
         startTargetImage.SetActive(true);
         Time.timeScale = 1;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         startMenuPanel.SetActive(false);
     }
