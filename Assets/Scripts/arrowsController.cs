@@ -7,10 +7,6 @@ public class arrowsController : MonoBehaviour
     public float force = 20;
     public GameObject arrow;
     public GameObject startMenu;
-    public GameObject horseman;
-    public Sprite horseman_idle;
-    public Sprite horseman_aiming;
-    public Sprite horseman_shot;
     public Transform spawn;
     public Transform crosshair;
     public float maxForce = 30;
@@ -36,13 +32,10 @@ public class arrowsController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    horseman.GetComponent<SpriteRenderer>().sprite = horseman_aiming;
                     InvokeRepeating("IncreaseForce", 0, chargingIntervall);
                 }
                 else if (Input.GetKeyUp(KeyCode.Space))
                 {
-                    horseman.GetComponent<SpriteRenderer>().sprite = horseman_shot;
-                    StartCoroutine(resetHorseman());
                     CancelInvoke("IncreaseForce");
                     ShootArrow();
                     force = minForce;
@@ -74,12 +67,6 @@ public class arrowsController : MonoBehaviour
         rb.velocity = fromSpawnToCross * force * -1;
 
         Destroy(clone, 2f);
-    }
-
-    IEnumerator resetHorseman()
-    {
-        yield return new WaitForSeconds(fireRate);
-        horseman.GetComponent<SpriteRenderer>().sprite = horseman_idle;
     }
 }
 
