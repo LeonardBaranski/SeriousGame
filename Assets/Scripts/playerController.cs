@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     public float moveSpeed = 5;
+    public GameObject startMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -17,14 +18,14 @@ public class playerController : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if (Input.GetKey ("d")) {
+        if (!startMenu.activeSelf) {
             pos.x += moveSpeed * Time.deltaTime;
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            //transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
-        if (Input.GetKey ("a")) {
+        /*if (Input.GetKey ("a")) {
             pos.x -= moveSpeed * Time.deltaTime;   
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
+        }*/
 
         transform.position = pos;
     }
