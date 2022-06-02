@@ -6,11 +6,13 @@ public class playerController : MonoBehaviour
 {
     public float moveSpeed = 5;
     public GameObject startMenu;
+    public GameObject playerStanding;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        gameObject.SetActive(true);
+        playerStanding.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,5 +30,15 @@ public class playerController : MonoBehaviour
         }*/
 
         transform.position = pos;
+    }
+
+    void OnCollisionEnter2D(Collision2D collider)
+    {
+        if (collider.gameObject.tag.Equals("Player"))
+        {
+            Time.timeScale = 0;
+            gameObject.SetActive(false);
+            playerStanding.SetActive(true);
+        }
     }
 }

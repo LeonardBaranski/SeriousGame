@@ -21,6 +21,7 @@ public class targetController : MonoBehaviour
         if (col.gameObject.tag.Equals("Arrow"))
         {
             Destroy(gameObject);
+            Destroy(col.gameObject);
         }
     }
 }
