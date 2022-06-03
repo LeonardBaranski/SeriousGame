@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class arrowsController : MonoBehaviour
 {
@@ -13,18 +14,15 @@ public class arrowsController : MonoBehaviour
     public Sprite horseman_shot;
     public Transform spawn;
     public Transform crosshair;
-    public float maxForce = 30;
-    public float minForce = 1;
-    public float chargingIntervall = .2f;
-    public float chargingIncrement = 3f;
     public float fireRate = 1f;
     private float lastShot = 0f;
+    private Slider slider;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        force = minForce;
+        slider = GameObject.FindWithTag("Slider").GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -37,15 +35,13 @@ public class arrowsController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     horseman.GetComponent<SpriteRenderer>().sprite = horseman_aiming;
-                    InvokeRepeating("IncreaseForce", 0, chargingIntervall);
                 }
                 else if (Input.GetKeyUp(KeyCode.Space))
                 {
                     horseman.GetComponent<SpriteRenderer>().sprite = horseman_shot;
                     StartCoroutine(resetHorseman());
-                    CancelInvoke("IncreaseForce");
+                    SetForce();
                     ShootArrow();
-                    force = minForce;
                     lastShot = Time.time;
                     Debug.Log(force);
                 }
@@ -53,14 +49,18 @@ public class arrowsController : MonoBehaviour
         }
     }
 
-    private void IncreaseForce()
+    private void SetForce()
     {
-        if (force < maxForce)
-        {
-            force += chargingIncrement;
-            Debug.Log(force);
-        }
+        
+        force = slider.value;
+        Debug.Log("VALUE IST:" + force);
     }
+
+    private float GetForce()
+    {
+        return force;
+    }
+
 
     private void ShootArrow()
     {
@@ -71,8 +71,8 @@ public class arrowsController : MonoBehaviour
 
         GameObject clone = Instantiate(arrow, spawn.position, spawn.rotation * Quaternion.Euler(0f, 180f, 0f));
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
-        rb.velocity = fromSpawnToCross * force * -1;
-
+        rb.velocity = fromSpawnToCross * GetForce() * -1;
+        slider.value = 1;
         Destroy(clone, 2f);
     }
 
