@@ -32,7 +32,7 @@ public class arrowsController : MonoBehaviour
         {
             if (!startMenu.activeSelf)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKey(KeyCode.Space))
                 {
                     horseman.GetComponent<SpriteRenderer>().sprite = horseman_aiming;
                 }
