@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Time.timeScale = 0;
         startMenuPanel.SetActive(true);
         startTargetImage.SetActive(false);
-        Time.timeScale = 0;
     }
 
     // Update is called once per frame
