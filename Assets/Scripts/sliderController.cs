@@ -11,6 +11,9 @@ public class sliderController : MonoBehaviour
     private float targetProgress = 0;
     public float maxForce = 33f;
 
+    private float fireRate = 1f;
+    private float lastShot = 0f;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,12 +29,18 @@ public class sliderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Time.time > fireRate + lastShot)
         {
-            Debug.Log(sliderBar.value + "LOL");
-            if (sliderBar.value < targetProgress)
+            if (Input.GetKey(KeyCode.Space))
             {
-                sliderBar.value += fillSpeed * Time.deltaTime;
+                if (sliderBar.value < targetProgress)
+                {
+                    sliderBar.value += fillSpeed * Time.deltaTime;
+                }
+            }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                lastShot = Time.time;
             }
         }
     }
