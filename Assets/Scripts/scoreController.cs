@@ -7,14 +7,16 @@ public class scoreController : MonoBehaviour
 {
     private Text scoreLabel;
     public int score;
-    public int highscore;
+    public int highScore;
+    public bool gameOver;
+    public Text highScoreText;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         scoreLabel = GameObject.Find("ScoreText").GetComponent<Text>();
 
-        //highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
         score = 0;
     }
 
@@ -22,6 +24,10 @@ public class scoreController : MonoBehaviour
     void Update()
     {
         ShowScore();
+        if (Time.timeScale == 0)
+        {
+            GameOver();
+        }
     }
 
     public void SetScore()
@@ -32,5 +38,24 @@ public class scoreController : MonoBehaviour
     public void ShowScore()
     {
         scoreLabel.text = "Score: " + score;
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
+        
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+        }
+        showHighScore();
+    }
+
+    void showHighScore()
+    {
+        highScoreText.text = "Highscore: " + highScore.ToString();
     }
 }
