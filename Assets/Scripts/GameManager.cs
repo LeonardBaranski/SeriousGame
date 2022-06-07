@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject startMenuPanel;
     public GameObject startTargetImage;
 
     // Start is called before the first frame update
     void Awake()
     {
-        Time.timeScale = 0;
-        startMenuPanel.SetActive(true);
+
         startTargetImage.SetActive(false);
     }
 
@@ -32,6 +31,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         yield return new WaitForSeconds(1f);
 
-        startMenuPanel.SetActive(false);
+        SceneManager.LoadScene("SampleScene");
     }
 }

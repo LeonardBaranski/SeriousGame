@@ -5,7 +5,11 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     public float moveSpeed = 5;
-    public GameObject startMenu;
+
+    private float upDownSpeed = 10f;
+    private float height = .13f;
+    private float startY = -0.14f;
+
     public GameObject playerStanding;
 
     // Start is called before the first frame update
@@ -20,12 +24,16 @@ public class playerController : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if (!startMenu.activeSelf) 
-        {
-            pos.x += moveSpeed * Time.deltaTime;
-        }
+        pos.x += moveSpeed * Time.deltaTime;
     
         transform.position = pos;
+    }
+
+    void Update()
+    {
+        var posi = transform.position;
+        var newY = startY + height*Mathf.Sin(Time.time * upDownSpeed);
+        transform.position = new Vector3(posi.x, newY, posi.z);
     }
 
     void OnCollisionEnter2D(Collision2D collider)
