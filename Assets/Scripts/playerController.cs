@@ -5,14 +5,17 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     public float moveSpeed = 5;
-    public GameObject startMenu;
-    public GameObject playerStanding;
+
+    public float upDownSpeed = 10f;
+    public float height = .13f;
+    public float startY = -0.14f;
+
+    public bool levelDone;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(true);
-        playerStanding.SetActive(false);
+        levelDone = false;
     }
 
     // Update is called once per frame
@@ -20,21 +23,23 @@ public class playerController : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if (!startMenu.activeSelf) 
-        {
-            pos.x += moveSpeed * Time.deltaTime;
-        }
+        pos.x += moveSpeed * Time.deltaTime;
     
         transform.position = pos;
+    }
+
+    void Update()
+    {
+        var posi = transform.position;
+        var newY = startY + height*Mathf.Sin(Time.time * upDownSpeed);
+        transform.position = new Vector3(posi.x, newY, posi.z);
     }
 
     void OnCollisionEnter2D(Collision2D collider)
     {
         if (collider.gameObject.tag.Equals("Player"))
         {
-            Time.timeScale = 0;
-            gameObject.SetActive(false);
-            playerStanding.SetActive(true);
+            levelDone = true;
         }
     }
 }

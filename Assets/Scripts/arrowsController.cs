@@ -7,7 +7,6 @@ public class arrowsController : MonoBehaviour
 {
     public float force = 20;
     public GameObject arrow;
-    public GameObject startMenu;
     public GameObject horseman;
     public Sprite horseman_idle;
     public Sprite horseman_aiming;
@@ -30,21 +29,18 @@ public class arrowsController : MonoBehaviour
     {
         if (Time.time > fireRate + lastShot)
         {
-            if (!startMenu.activeSelf)
+            if (Input.GetKey(KeyCode.Space))
             {
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    horseman.GetComponent<SpriteRenderer>().sprite = horseman_aiming;
-                }
-                else if (Input.GetKeyUp(KeyCode.Space))
-                {
-                    horseman.GetComponent<SpriteRenderer>().sprite = horseman_shot;
-                    StartCoroutine(resetHorseman());
-                    SetForce();
-                    ShootArrow();
-                    lastShot = Time.time;
-                    Debug.Log(force);
-                }
+                horseman.GetComponent<SpriteRenderer>().sprite = horseman_aiming;
+            }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                horseman.GetComponent<SpriteRenderer>().sprite = horseman_shot;
+                StartCoroutine(resetHorseman());
+                SetForce();
+                ShootArrow();
+                lastShot = Time.time;
+                Debug.Log(force);
             }
         }
     }

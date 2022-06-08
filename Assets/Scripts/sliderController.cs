@@ -14,6 +14,8 @@ public class sliderController : MonoBehaviour
     private float fireRate = 1f;
     private float lastShot = 0f;
 
+    public playerController levelOver;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,6 +31,7 @@ public class sliderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsGameRunning();
         if (Time.time > fireRate + lastShot)
         {
             if (Input.GetKey(KeyCode.Space))
@@ -48,5 +51,13 @@ public class sliderController : MonoBehaviour
     public void IncrementProgress(float newProgress)
     {
         targetProgress = sliderBar.value + newProgress;
+    }
+
+    void IsGameRunning()
+    {
+        if (levelOver.levelDone)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
