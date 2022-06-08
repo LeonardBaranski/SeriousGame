@@ -11,6 +11,8 @@ public class scoreController : MonoBehaviour
     public bool gameOver;
     public Text highScoreText;
 
+    public playerController endGame;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +27,9 @@ public class scoreController : MonoBehaviour
     {
         ShowScore();
         showHighScore();
-        if (Time.timeScale == 0)
+        if (endGame.levelDone)
         {
-            GameOver();
+            StartCoroutine(waitForEnd());
         }
     }
 
@@ -44,7 +46,7 @@ public class scoreController : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
-        
+        Debug.Log("GAMEOVER");
         highScore = PlayerPrefs.GetInt("HighScore", 0);
 
         if (score > highScore)
@@ -58,5 +60,12 @@ public class scoreController : MonoBehaviour
     void showHighScore()
     {
         highScoreText.text = "Highscore: " + highScore.ToString();
+    }
+
+    private IEnumerator waitForEnd()
+    {
+        yield return new WaitForSeconds(3f);
+        Time.timeScale = 0f;
+        GameOver();
     }
 }
