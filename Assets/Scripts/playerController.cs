@@ -6,9 +6,9 @@ public class playerController : MonoBehaviour
 {
     public float moveSpeed = 5;
 
-    private float upDownSpeed = 10f;
-    private float height = .13f;
-    private float startY = -0.14f;
+    public float upDownSpeed = 10f;
+    public float height = .13f;
+    public float startY = -0.14f;
 
     public bool levelDone;
 

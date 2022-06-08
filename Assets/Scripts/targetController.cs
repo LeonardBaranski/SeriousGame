@@ -5,6 +5,9 @@ using UnityEngine;
 public class targetController : MonoBehaviour
 {   
     scoreController scoreValue;
+    
+    public GameObject targetSlicedPrefab;
+    public float explosionForce = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,21 @@ public class targetController : MonoBehaviour
             scoreValue.SetScore();
             Destroy(gameObject);
             Destroy(col.gameObject);
+            CreateSlicedTarget();
         }
+    }
+
+    public void CreateSlicedTarget()
+    {
+        GameObject inst = Instantiate(targetSlicedPrefab, gameObject.transform.position, transform.rotation);
+        Rigidbody[] rbonsliced = inst.transform.GetComponentsInChildren<Rigidbody>();
+        Debug.Log(inst.transform.position);
+        foreach (Rigidbody r in rbonsliced)
+        {
+            r.transform.rotation = Random.rotation;
+            r.AddExplosionForce(Random.Range(100,200), transform.position, 0f, explosionForce);
+        }
+
+        Destroy(inst.gameObject, 1.5f);
     }
 }
