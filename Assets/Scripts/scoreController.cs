@@ -24,6 +24,7 @@ public class scoreController : MonoBehaviour
     void Update()
     {
         ShowScore();
+        showHighScore();
         if (Time.timeScale == 0)
         {
             GameOver();

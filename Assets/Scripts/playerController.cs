@@ -10,13 +10,12 @@ public class playerController : MonoBehaviour
     private float height = .13f;
     private float startY = -0.14f;
 
-    public GameObject playerStanding;
+    public bool levelDone;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(true);
-        playerStanding.SetActive(false);
+        levelDone = false;
     }
 
     // Update is called once per frame
@@ -40,9 +39,7 @@ public class playerController : MonoBehaviour
     {
         if (collider.gameObject.tag.Equals("Player"))
         {
-            Time.timeScale = 0;
-            gameObject.SetActive(false);
-            playerStanding.SetActive(true);
+            levelDone = true;
         }
     }
 }

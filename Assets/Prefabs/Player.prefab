@@ -1500,7 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  startMenu: {fileID: 0}
+  levelDone: 0
   playerStanding: {fileID: 0}
 --- !u!114 &6779939700224387316
 MonoBehaviour:
@@ -1516,17 +1516,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 20
   arrow: {fileID: 5485763770016990151, guid: 5f45a2b7b63a46c4b8e2d2d857522248, type: 3}
-  startMenu: {fileID: 0}
   horseman: {fileID: 6779939699392397108}
   horseman_idle: {fileID: 4444445172356849783, guid: bfb82720e765de24b899a1c4582be4e1, type: 3}
   horseman_aiming: {fileID: -6900357388595368624, guid: bfb82720e765de24b899a1c4582be4e1, type: 3}
   horseman_shot: {fileID: 5492695599688754846, guid: bfb82720e765de24b899a1c4582be4e1, type: 3}
   spawn: {fileID: 6779939700320429953}
   crosshair: {fileID: 6779939699247794021}
-  maxForce: 33
-  minForce: 1
-  chargingIntervall: 0.2
-  chargingIncrement: 4
   fireRate: 1
 --- !u!1 &6779939700243345596
 GameObject:
