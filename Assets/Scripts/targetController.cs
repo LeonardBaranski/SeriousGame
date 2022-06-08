@@ -38,7 +38,6 @@ public class targetController : MonoBehaviour
     {
         GameObject inst = Instantiate(targetSlicedPrefab, gameObject.transform.position, transform.rotation);
         Rigidbody[] rbonsliced = inst.transform.GetComponentsInChildren<Rigidbody>();
-        Debug.Log(inst.transform.position);
         foreach (Rigidbody r in rbonsliced)
         {
             r.transform.rotation = Random.rotation;
