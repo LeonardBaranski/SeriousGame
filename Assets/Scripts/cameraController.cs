@@ -7,18 +7,28 @@ public class cameraController : MonoBehaviour {
     public Transform player;
     public playerController levelOver;
 
-    void Start()
-    {
+    private float yPos;
 
+    void Awake()
+    {
+        yPos = transform.position.y;
     }
 
     // Update is called once per frame
-    void FixedUpdate () 
+    void FixedUpdate() 
     {
        if (!levelOver.levelDone)
        {
            unlockPlayer();
        }
+    }
+
+    void LateUpdate()
+    {
+        if(!levelOver.levelDone)
+        {
+            transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
+        }
     }
 
     void unlockPlayer()
