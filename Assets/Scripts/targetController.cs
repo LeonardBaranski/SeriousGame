@@ -23,7 +23,7 @@ public class targetController : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D col)
+    public void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag.Equals("Arrow"))
         {
