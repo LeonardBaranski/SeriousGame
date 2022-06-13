@@ -33,9 +33,9 @@ public class scoreController : MonoBehaviour
         }
     }
 
-    public void SetScore()
+    public void SetScore(int targetPoints)
     {
-        score += 1;
+        score += targetPoints;
     }
 
     public void ShowScore()

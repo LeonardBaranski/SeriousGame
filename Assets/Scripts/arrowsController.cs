@@ -65,7 +65,7 @@ public class arrowsController : MonoBehaviour
         Vector3 fromSpawnToCross = spawnPos - crosshairPos;
         fromSpawnToCross.Normalize();
 
-        GameObject clone = Instantiate(arrow, spawn.position, spawn.rotation * Quaternion.Euler(0f, 180f, 0f));
+        GameObject clone = Instantiate(arrow, spawn.position, Quaternion.Euler(0f, 0f, 10f));
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
         rb.velocity = fromSpawnToCross * GetForce() * -1;
         slider.value = 1;

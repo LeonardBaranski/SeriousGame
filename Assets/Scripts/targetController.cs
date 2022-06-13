@@ -6,6 +6,7 @@ public class targetController : MonoBehaviour
 {   
     scoreController scoreValue;
     
+    public int targetPoints = 1;
     public GameObject targetSlicedPrefab;
     public float explosionForce = 5f;
 
@@ -27,7 +28,7 @@ public class targetController : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Arrow"))
         {
-            scoreValue.SetScore();
+            scoreValue.SetScore(targetPoints);
             Destroy(gameObject);
             Destroy(col.gameObject);
             CreateSlicedTarget();
