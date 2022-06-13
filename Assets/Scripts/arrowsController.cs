@@ -69,7 +69,7 @@ public class arrowsController : MonoBehaviour
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
         rb.velocity = fromSpawnToCross * GetForce() * -1;
         slider.value = 1;
-        Destroy(clone, 2f);
+        Destroy(clone, 4f);
     }
 
     IEnumerator resetHorseman()
