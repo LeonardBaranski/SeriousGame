@@ -13,6 +13,7 @@ public class scoreController : MonoBehaviour
     public Canvas ingameCanvas;
     public Text highScoreText;
     public GameObject resetLevelButton;
+    public GameObject returnToMenuButton;
     public Canvas endScreenCanvas;
     public Text endScoreLabel;
     public Text endHighScore;
@@ -36,6 +37,7 @@ public class scoreController : MonoBehaviour
         showHighScore();
         if (endGame.levelDone)
         {
+            returnToMenuButton.GetComponent<Button>().interactable = false;
             resetLevelButton.GetComponent<Button>().interactable = false;
             StartCoroutine(waitForEnd());
         }

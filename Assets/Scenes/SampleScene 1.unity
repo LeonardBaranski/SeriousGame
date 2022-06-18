@@ -1257,6 +1257,7 @@ MonoBehaviour:
   ingameCanvas: {fileID: 721131564}
   highScoreText: {fileID: 1935499936}
   resetLevelButton: {fileID: 1191225166}
+  returnToMenuButton: {fileID: 78517679}
   endScreenCanvas: {fileID: 1514990060}
   endScoreLabel: {fileID: 74700363}
   endHighScore: {fileID: 729145488}
@@ -2263,7 +2264,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset
+  m_Text: "Zur\xFCcksetzen"
 --- !u!222 &898924056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2607,8 +2608,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 419.85022, y: -237}
-  m_SizeDelta: {x: 99.235, y: 30}
+  m_AnchoredPosition: {x: 414.73767, y: -237}
+  m_SizeDelta: {x: 109.4601, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1261369770
 GameObject:
@@ -3616,7 +3617,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 4.5, y: 4.5, z: 0}
   m_MaxChunkCount: 16

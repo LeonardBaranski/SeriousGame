@@ -18,18 +18,7 @@ public class ingameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("escape"))
-        {
-            if (!gamePaused)
-            {
-                Time.timeScale = 0f;
-                gamePaused = true;
-            } else {
-                Time.timeScale = 1f;
-                gamePaused = false;
-            }
-            
-        }
+        
     }
 
     
