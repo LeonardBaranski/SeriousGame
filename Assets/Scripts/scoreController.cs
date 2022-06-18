@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scoreController : MonoBehaviour
 {
@@ -9,16 +10,22 @@ public class scoreController : MonoBehaviour
     public int score;
     public int highScore;
     public bool gameOver;
+    public Canvas ingameCanvas;
     public Text highScoreText;
-
+    public GameObject resetLevelButton;
+    public Canvas endScreenCanvas;
+    public Text endScoreLabel;
+    public Text endHighScore;
     public playerController endGame;
+    public string levelName;
 
     // Start is called before the first frame update
     void Start()
     {
         scoreLabel = GameObject.Find("ScoreText").GetComponent<Text>();
 
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        levelName = SceneManager.GetActiveScene().name;
+        highScore = PlayerPrefs.GetInt("HighScore" + levelName, 0);
         score = 0;
     }
 
@@ -29,6 +36,7 @@ public class scoreController : MonoBehaviour
         showHighScore();
         if (endGame.levelDone)
         {
+            resetLevelButton.GetComponent<Button>().interactable = false;
             StartCoroutine(waitForEnd());
         }
     }
@@ -47,14 +55,20 @@ public class scoreController : MonoBehaviour
     {
         gameOver = true;
         Debug.Log("GAMEOVER");
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        //highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        endScoreLabel.text = "Punktzahl: " + score;
+        endHighScore.text = "Highscore: " + highScore;
 
         if (score > highScore)
         {
             highScore = score;
-            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.SetInt("HighScore" + levelName, highScore);
+            endHighScore.text = "Neuer Highscore!";
         }
         showHighScore();
+        ingameCanvas.GetComponent<Canvas>().enabled = false;
+        endScreenCanvas.GetComponent<Canvas>().enabled = true;
     }
 
     void showHighScore()
