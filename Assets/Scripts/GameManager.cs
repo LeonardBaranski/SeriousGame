@@ -138,6 +138,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         yield return new WaitForSeconds(1f);
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleScene 1");
     }
 }
