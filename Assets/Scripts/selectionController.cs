@@ -60,7 +60,7 @@ public class selectionController : MonoBehaviour
     
     public void playLevel3()
     {
-        //SceneManager.LoadScene(level3name);
+        SceneManager.LoadScene(level3name);
         Debug.Log("Coming Soon");
     }
     
