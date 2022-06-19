@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    public scoreController scoreController;
     public float moveSpeed = 5;
 
     public float upDownSpeed = 10f;
     public float height = .13f;
     public float startY = -0.14f;
+    public Canvas endScreenCanvas;
 
     public bool levelDone;
 
@@ -16,6 +18,7 @@ public class playerController : MonoBehaviour
     void Start()
     {
         levelDone = false;
+        endScreenCanvas.GetComponent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame

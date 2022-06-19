@@ -20,7 +20,7 @@ public class spectatorController : MonoBehaviour
         scoreValue = scoreDisplay.GetComponent<scoreController>();
     }
 
-    public void OnCollisionEnter2D(Collision2D col)
+    /* public void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag.Equals("Arrow"))
         {
@@ -28,7 +28,7 @@ public class spectatorController : MonoBehaviour
             Destroy(col.gameObject);
             CreateSlicedTarget();
         }
-    }
+    } */
 
     public void OnTriggerEnter2D(Collider2D trg)
     {

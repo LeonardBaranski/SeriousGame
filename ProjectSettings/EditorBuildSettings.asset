@@ -8,10 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: d38e3b65f30651d4b9fa2c29da4b4647
-  - enabled: 1
-    path: Assets/Scenes/MoritzSzene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SampleScene 1.unity
     guid: 78fb1de3f9c09194e903ffc54049fb77
+  - enabled: 1
+    path: Assets/Scenes/AndiSzene.unity
+    guid: 85f1fe23fe62b8044b4c87605ca295fa
+  - enabled: 1
+    path: Assets/Scenes/LevelSelection.unity
+    guid: 7946f11f34447bf49b7e60389fc4ff92
+  - enabled: 1
+    path: Assets/Scenes/MoritzSzene.unity
+    guid: 7c1816b4b4f24234a8cbab041f932b8f
   m_configObjects: {}

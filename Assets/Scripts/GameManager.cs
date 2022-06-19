@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        QualitySettings.vSyncCount = 1;
+
         startTargetImage.SetActive(false);
         canvas.GetComponent<Canvas>().enabled = false;
         distance = endXpos - startXpos;
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (scrolling)
         {
@@ -138,6 +140,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         yield return new WaitForSeconds(1f);
 
-        SceneManager.LoadScene("SampleScene 1");
+        SceneManager.LoadScene("LevelSelection");
     }
 }
