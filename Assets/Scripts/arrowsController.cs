@@ -17,6 +17,10 @@ public class arrowsController : MonoBehaviour
     private float lastShot = 0f;
     private Slider slider;
 
+    public AudioSource bowDraw;
+    public AudioSource arrowShoot;
+
+    private bool played = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +36,18 @@ public class arrowsController : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 horseman.GetComponent<SpriteRenderer>().sprite = horseman_aiming;
+                if(!played){
+                    bowDraw.Play();
+                    played = true;
+                }
             }
             else if (Input.GetKeyUp(KeyCode.Space))
             {
+                played = false;
                 horseman.GetComponent<SpriteRenderer>().sprite = horseman_shot;
                 StartCoroutine(resetHorseman());
                 SetForce();
+                arrowShoot.Play();
                 ShootArrow();
                 lastShot = Time.time;
                 Debug.Log(force);
@@ -77,5 +87,7 @@ public class arrowsController : MonoBehaviour
         yield return new WaitForSeconds(fireRate);
         horseman.GetComponent<SpriteRenderer>().sprite = horseman_idle;
     }
+
+    
 }
 

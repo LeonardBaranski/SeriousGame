@@ -14,6 +14,12 @@ public class playerController : MonoBehaviour
 
     public bool levelDone;
 
+    public AudioSource horseRun;
+
+    public AudioSource musik;
+
+    private bool isPlayed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +35,12 @@ public class playerController : MonoBehaviour
         pos.x += moveSpeed * Time.deltaTime;
     
         transform.position = pos;
+
+        if(!isPlayed){
+            horseRun.Play();
+            musik.Play();
+            isPlayed = true;
+        }
     }
 
     void Update()
@@ -43,6 +55,7 @@ public class playerController : MonoBehaviour
         if (collider.gameObject.tag.Equals("Player"))
         {
             levelDone = true;
+            horseRun.Stop();            
         }
     }
 }
