@@ -96,8 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8eaf299596a7643bf5a507955a7e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPoints: 1
   targetSlicedPrefab: {fileID: 6631006234825384363, guid: 2c5542f610fcd8345930c884cf9c787b, type: 3}
   explosionForce: 100
+  impactSound: {fileID: 0}
 --- !u!60 &1138327308805127416
 PolygonCollider2D:
   m_ObjectHideFlags: 0

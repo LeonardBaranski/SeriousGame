@@ -10,6 +10,8 @@ public class targetController : MonoBehaviour
     public GameObject targetSlicedPrefab;
     public float explosionForce = 5f;
 
+    public AudioSource impactSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class targetController : MonoBehaviour
         if (col.gameObject.tag.Equals("Arrow"))
         {
             scoreValue.SetScore(targetPoints);
+            impactSound.Play();
             Destroy(gameObject);
             Destroy(col.gameObject);
             CreateSlicedTarget();
