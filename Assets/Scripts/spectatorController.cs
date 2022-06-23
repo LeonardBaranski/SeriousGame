@@ -11,6 +11,8 @@ public class spectatorController : MonoBehaviour
 
     public GameObject targetSlicedPrefab;
     public float explosionForce = 5f;
+    
+    public AudioSource grunt;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class spectatorController : MonoBehaviour
     {
         if (trg.gameObject.tag.Equals("Arrow"))
         {
+            grunt.Play();
             scoreValue.SetScore(hittingSpectator);
             Destroy(trg.gameObject);
             StartCoroutine("FlashSpectator");
